@@ -473,6 +473,10 @@ body::before {
     color: #29231f;
 }
 
+.profile-share-actions button[data-share="x"] {
+    color: #29231f;
+}
+
 .profile-share-actions button[data-share="instagram"] {
     color: #c45b5b;
 }
@@ -481,14 +485,22 @@ body::before {
     color: #8b5e3c;
 }
 
+.profile-share-actions button[data-share="substack"] {
+    color: #e56b2f;
+}
+
+.profile-share-actions button[data-share="github"] {
+    color: #29231f;
+}
+
 .profile-share-actions button[data-share="copy"] {
     color: var(--pixel-accent);
 }
 
 .profile-share-row:hover .profile-share-actions,
 .profile-share-row:focus-within .profile-share-actions {
-    flex-basis: 112px;
-    width: 112px;
+    flex-basis: 170px;
+    width: 170px;
 }
 
 .profile-share-row:hover .profile-share-actions button,
@@ -510,6 +522,11 @@ body::before {
 .profile-share-row:hover .profile-share-actions button:nth-child(4),
 .profile-share-row:focus-within .profile-share-actions button:nth-child(4) {
     transition-delay: 150ms;
+}
+
+.profile-share-row:hover .profile-share-actions button:nth-child(5),
+.profile-share-row:focus-within .profile-share-actions button:nth-child(5) {
+    transition-delay: 200ms;
 }
 
 .profile-share-actions button:hover,

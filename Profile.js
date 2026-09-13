@@ -147,7 +147,6 @@ document.querySelectorAll("[data-share]").forEach(button => {
         event.stopPropagation();
         const shareType = button.dataset.share;
         const pageUrl = window.location.href;
-        const shareText = "You Found Vaibhav's Page ✦";
 
         if (shareType === "copy") {
             navigator.clipboard?.writeText(pageUrl);
@@ -161,9 +160,11 @@ document.querySelectorAll("[data-share]").forEach(button => {
         }
 
         const shareUrls = {
-            twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`,
+            x: "https://x.com/home",
             instagram: "https://www.instagram.com/",
-            linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`
+            substack: "https://substack.com/",
+            github: "https://github.com/vaibhav-da-glitch",
+            linkedin: "https://www.linkedin.com/in/vaibhav-pachkore"
         };
 
         window.open(shareUrls[shareType], "_blank", "noopener,noreferrer");
