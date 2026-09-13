@@ -146,7 +146,6 @@ document.addEventListener("click", event => {
             startTime: now
         });
     }
-
 });
 
 document.querySelectorAll("[data-share]").forEach(button => {
