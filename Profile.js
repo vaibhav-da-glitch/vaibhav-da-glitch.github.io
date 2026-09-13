@@ -71,10 +71,6 @@ function drawSnow() {
 
     for (const snow of snowflakes) {
 
-        /*
-         * Rectangle instead of circle
-         * = pixel-style snow
-         */
         ctx.fillRect(
             Math.floor(snow.x),
             Math.floor(snow.y),
@@ -85,13 +81,11 @@ function drawSnow() {
         snow.y += snow.speed;
         snow.x += snow.drift;
 
-        // When snow reaches bottom
         if (snow.y > canvas.height) {
             snow.y = -snow.size;
             snow.x = Math.random() * canvas.width;
         }
 
-        // Keep snow inside horizontal boundaries
         if (snow.x > canvas.width) {
             snow.x = 0;
         }
@@ -181,56 +175,59 @@ const profileTrigger = document.querySelector(".profile-trigger");
 const profileDropdown = document.querySelector(".profile-dropdown");
 const achievementAlert = document.querySelector("#achievement-alert");
 const achievementClose = document.querySelector(".achievement-close");
-const soundToggle = document.querySelector("#sound-toggle");
 const achievementSound = new Audio("orb.mp3");
 const clickSound = new Audio("minecraft_click.mp3");
 achievementSound.preload = "auto";
 achievementSound.volume = 1;
 clickSound.preload = "auto";
 clickSound.volume = 1;
+clickSound.load();
 
-let soundEnabled = false;
+const clickAudioContext = window.AudioContext || window.webkitAudioContext;
+const clickContext = clickAudioContext ? new clickAudioContext() : null;
+let clickBuffer;
 
-function updateSoundToggle() {
-    soundToggle.setAttribute("aria-pressed", String(soundEnabled));
-    soundToggle.title = soundEnabled ? "Disable sound" : "Enable sound";
-    soundToggle.querySelector("span").textContent = soundEnabled ? "SOUND: ON" : "SOUND: OFF";
-    soundToggle.classList.toggle("is-enabled", soundEnabled);
-}
-
-function enableSound() {
-    if (soundEnabled) return;
-
-    soundEnabled = true;
-    updateSoundToggle();
-    achievementSound.currentTime = 0;
-    achievementSound.play().catch(() => {});
+if (clickContext) {
+    fetch("minecraft_click.mp3")
+        .then(response => response.arrayBuffer())
+        .then(data => clickContext.decodeAudioData(data))
+        .then(buffer => {
+            clickBuffer = buffer;
+        })
+        .catch(() => {});
 }
 
 function playClickSound() {
-    if (!soundEnabled) return;
+    if (clickContext && clickBuffer) {
+        clickContext.resume();
+        const source = clickContext.createBufferSource();
+        source.buffer = clickBuffer;
+        source.connect(clickContext.destination);
+        source.start(0);
+        return;
+    }
 
     clickSound.currentTime = 0;
     clickSound.play().catch(() => {});
 }
 
-document.addEventListener("pointerdown", () => {
-    enableSound();
-    playClickSound();
+document.addEventListener("pointerdown", playClickSound);
+
+function playAchievementSound() {
+    if (!achievementSound) return;
+
+    achievementSound.currentTime = 0;
+    achievementSound.play().catch(() => {
+        document.addEventListener("pointerdown", () => {
+            achievementSound.currentTime = 0;
+            achievementSound.play().catch(() => {});
+        }, { once: true });
+    });
+}
+
+window.addEventListener("load", () => {
+    setTimeout(playAchievementSound, 350);
 });
-
-soundToggle.addEventListener("click", event => {
-    event.stopPropagation();
-    soundEnabled = !soundEnabled;
-    updateSoundToggle();
-
-    if (soundEnabled) {
-        achievementSound.currentTime = 0;
-        achievementSound.play().catch(() => {});
-    }
-});
-
-updateSoundToggle();
 
 achievementClose.addEventListener("click", () => {
     achievementAlert.hidden = true;

@@ -31,7 +31,6 @@ body {
     font-family: "Silkscreen", monospace;
 }
 
-/* Background grid */
 body::before {
     content: "";
     position: fixed;
@@ -45,7 +44,6 @@ body::before {
     mask-image: linear-gradient(to bottom, black 10%, rgba(0, 0, 0, 0.7) 100%);
 }
 
-/* Snow canvas */
 #snow {
     position: fixed;
     inset: 0;
@@ -57,7 +55,6 @@ body::before {
     z-index: 0;
 }
 
-/* ClickSpark canvas */
 #click-spark {
     position: fixed;
     inset: 0;
@@ -67,7 +64,6 @@ body::before {
     z-index: 3;
 }
 
-/* Custom cursor point */
 .cursor-point {
     position: fixed;
     top: 0;
@@ -103,7 +99,6 @@ body::before {
     }
 }
 
-/* Website content */
 .content {
     position: relative;
     z-index: 2;
@@ -347,43 +342,6 @@ body::before {
 .profile-menu.is-open .profile-bend {
     color: var(--pixel-accent);
     transform: translateY(-50%) scale(1.1);
-}
-
-.sound-toggle {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    z-index: 4;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 36px;
-    padding: 8px 10px;
-    border: 1px solid var(--panel-border);
-    border-radius: 0;
-    background: rgba(255, 255, 255, 0.92);
-    color: var(--ink);
-    cursor: pointer;
-    font: 0.58rem "Silkscreen", monospace;
-    box-shadow: 4px 4px 0 var(--pixel-shadow);
-}
-
-.sound-toggle svg {
-    width: 16px;
-    height: 16px;
-    fill: none;
-    stroke: currentColor;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.8;
-}
-
-.sound-toggle:hover,
-.sound-toggle:focus-visible,
-.sound-toggle.is-enabled {
-    background: var(--pixel-accent);
-    color: white;
-    outline: none;
 }
 
 .profile-dropdown {
@@ -658,11 +616,6 @@ body::before {
     .profile-menu {
         top: 14px;
         right: 14px;
-    }
-
-    .sound-toggle {
-        right: 14px;
-        bottom: 14px;
     }
 
     .profile-dropdown {
