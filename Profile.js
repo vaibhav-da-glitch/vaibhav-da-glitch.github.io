@@ -187,53 +187,32 @@ achievementSound.preload = "auto";
 achievementSound.volume = 1;
 clickSound.preload = "auto";
 clickSound.volume = 1;
-clickSound.load();
-
-const clickAudioContext = window.AudioContext || window.webkitAudioContext;
-const clickContext = clickAudioContext ? new clickAudioContext() : null;
-let clickBuffer;
-
-if (clickContext) {
-    fetch("minecraft_click.mp3")
-        .then(response => response.arrayBuffer())
-        .then(data => clickContext.decodeAudioData(data))
-        .then(buffer => {
-            clickBuffer = buffer;
-        })
-        .catch(() => {});
-}
 
 function playClickSound() {
-    if (clickContext && clickBuffer) {
-        clickContext.resume();
-        const source = clickContext.createBufferSource();
-        source.buffer = clickBuffer;
-        source.connect(clickContext.destination);
-        source.start(0);
-        return;
-    }
-
     clickSound.currentTime = 0;
     clickSound.play().catch(() => {});
 }
 
 document.addEventListener("pointerdown", playClickSound);
 
-function playAchievementSound() {
-    if (!achievementSound) return;
+let achievementSoundUnlocked = false;
 
+function playAchievementSound() {
     achievementSound.currentTime = 0;
-    achievementSound.play().catch(() => {
-        document.addEventListener("pointerdown", () => {
-            achievementSound.currentTime = 0;
-            achievementSound.play().catch(() => {});
-        }, { once: true });
-    });
+    achievementSound.play().then(() => {
+        achievementSoundUnlocked = true;
+    }).catch(() => {});
 }
 
 window.addEventListener("load", () => {
     setTimeout(playAchievementSound, 350);
 });
+
+document.addEventListener("pointerdown", () => {
+    if (!achievementSoundUnlocked) {
+        playAchievementSound();
+    }
+}, { once: true });
 
 achievementClose.addEventListener("click", () => {
     achievementAlert.hidden = true;
