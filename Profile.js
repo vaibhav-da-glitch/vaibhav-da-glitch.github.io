@@ -181,6 +181,7 @@ const profileTrigger = document.querySelector(".profile-trigger");
 const profileDropdown = document.querySelector(".profile-dropdown");
 const achievementAlert = document.querySelector("#achievement-alert");
 const achievementClose = document.querySelector(".achievement-close");
+const soundToggle = document.querySelector("#sound-toggle");
 const achievementSound = new Audio("orb.mp3");
 const clickSound = new Audio("minecraft_click.mp3");
 achievementSound.preload = "auto";
@@ -188,31 +189,48 @@ achievementSound.volume = 1;
 clickSound.preload = "auto";
 clickSound.volume = 1;
 
+let soundEnabled = false;
+
+function updateSoundToggle() {
+    soundToggle.setAttribute("aria-pressed", String(soundEnabled));
+    soundToggle.title = soundEnabled ? "Disable sound" : "Enable sound";
+    soundToggle.querySelector("span").textContent = soundEnabled ? "SOUND: ON" : "SOUND: OFF";
+    soundToggle.classList.toggle("is-enabled", soundEnabled);
+}
+
+function enableSound() {
+    if (soundEnabled) return;
+
+    soundEnabled = true;
+    updateSoundToggle();
+    achievementSound.currentTime = 0;
+    achievementSound.play().catch(() => {});
+}
+
 function playClickSound() {
+    if (!soundEnabled) return;
+
     clickSound.currentTime = 0;
     clickSound.play().catch(() => {});
 }
 
-document.addEventListener("pointerdown", playClickSound);
-
-let achievementSoundUnlocked = false;
-
-function playAchievementSound() {
-    achievementSound.currentTime = 0;
-    achievementSound.play().then(() => {
-        achievementSoundUnlocked = true;
-    }).catch(() => {});
-}
-
-window.addEventListener("load", () => {
-    setTimeout(playAchievementSound, 350);
+document.addEventListener("pointerdown", () => {
+    enableSound();
+    playClickSound();
 });
 
-document.addEventListener("pointerdown", () => {
-    if (!achievementSoundUnlocked) {
-        playAchievementSound();
+soundToggle.addEventListener("click", event => {
+    event.stopPropagation();
+    soundEnabled = !soundEnabled;
+    updateSoundToggle();
+
+    if (soundEnabled) {
+        achievementSound.currentTime = 0;
+        achievementSound.play().catch(() => {});
     }
-}, { once: true });
+});
+
+updateSoundToggle();
 
 achievementClose.addEventListener("click", () => {
     achievementAlert.hidden = true;
