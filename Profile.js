@@ -147,6 +147,7 @@ document.querySelectorAll("[data-share]").forEach(button => {
         event.stopPropagation();
         const shareType = button.dataset.share;
         const pageUrl = window.location.href;
+        const shareText = "You Found Vaibhav's Page ✦";
 
         if (shareType === "copy") {
             navigator.clipboard?.writeText(pageUrl);
@@ -160,11 +161,9 @@ document.querySelectorAll("[data-share]").forEach(button => {
         }
 
         const shareUrls = {
-            x: "https://x.com/home",
+            twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`,
             instagram: "https://www.instagram.com/",
-            substack: "https://substack.com/",
-            github: "https://github.com/vaibhav-da-glitch",
-            linkedin: "https://www.linkedin.com/in/vaibhav-pachkore"
+            linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`
         };
 
         window.open(shareUrls[shareType], "_blank", "noopener,noreferrer");
@@ -176,6 +175,8 @@ const profileTrigger = document.querySelector(".profile-trigger");
 const profileDropdown = document.querySelector(".profile-dropdown");
 const achievementAlert = document.querySelector("#achievement-alert");
 const achievementClose = document.querySelector(".achievement-close");
+const developmentAlert = document.querySelector("#development-alert");
+const developmentClose = developmentAlert.querySelector(".achievement-close");
 const achievementSound = new Audio("orb.mp3");
 const clickSound = new Audio("minecraft_click.mp3");
 achievementSound.preload = "auto";
@@ -232,6 +233,10 @@ window.addEventListener("load", () => {
 
 achievementClose.addEventListener("click", () => {
     achievementAlert.hidden = true;
+});
+
+developmentClose.addEventListener("click", () => {
+    developmentAlert.hidden = true;
 });
 
 function setProfileMenu(open) {

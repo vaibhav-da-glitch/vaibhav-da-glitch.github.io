@@ -203,13 +203,67 @@ body::before {
     opacity: 0.9;
 }
 
+.social-links {
+    width: min(92vw, 700px);
+    margin-top: 22px;
+    padding: 18px 22px 20px;
+    border-top: 1px solid var(--panel-border);
+    text-align: left;
+}
+
+.social-links-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-links-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.social-link {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(41, 35, 31, 0.28);
+    background: rgba(255, 255, 255, 0.75);
+    color: var(--ink);
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.social-link svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+    border-color: currentColor;
+    background: #fff;
+    outline: none;
+    transform: translateY(-3px);
+}
+
+.social-link-instagram { color: #c45b5b; }
+.social-link-linkedin { color: #2867a8; }
+.social-link-substack { color: #df6c2e; }
+.social-link-github { color: #29231f; }
+.social-link-leetcode { color: #b97825; }
+.social-link-x { color: #29231f; }
+
 .success-alert {
     display: flex;
     align-items: center;
-    position: fixed;
-    top: 94px;
-    right: 24px;
-    left: auto;
+    position: relative;
     z-index: 4;
     width: min(88vw, 330px);
     padding: 14px 38px 14px 16px;
@@ -229,6 +283,32 @@ body::before {
     flex: 0 0 auto;
     margin-right: 12px;
     color: var(--success-green);
+}
+
+.development-alert {
+    animation-delay: 5s;
+}
+
+.alert-stack {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 4;
+    display: grid;
+    gap: 10px;
+    width: min(88vw, 330px);
+    pointer-events: none;
+}
+
+.alert-stack .success-alert {
+    width: 100%;
+    pointer-events: auto;
+}
+
+.development-icon {
+    flex: 0 0 auto;
+    margin-right: 12px;
+    color: var(--pixel-accent);
 }
 
 .success-alert div {
@@ -473,10 +553,6 @@ body::before {
     color: #29231f;
 }
 
-.profile-share-actions button[data-share="x"] {
-    color: #29231f;
-}
-
 .profile-share-actions button[data-share="instagram"] {
     color: #c45b5b;
 }
@@ -485,22 +561,14 @@ body::before {
     color: #8b5e3c;
 }
 
-.profile-share-actions button[data-share="substack"] {
-    color: #e56b2f;
-}
-
-.profile-share-actions button[data-share="github"] {
-    color: #29231f;
-}
-
 .profile-share-actions button[data-share="copy"] {
     color: var(--pixel-accent);
 }
 
 .profile-share-row:hover .profile-share-actions,
 .profile-share-row:focus-within .profile-share-actions {
-    flex-basis: 170px;
-    width: 170px;
+    flex-basis: 112px;
+    width: 112px;
 }
 
 .profile-share-row:hover .profile-share-actions button,
@@ -522,11 +590,6 @@ body::before {
 .profile-share-row:hover .profile-share-actions button:nth-child(4),
 .profile-share-row:focus-within .profile-share-actions button:nth-child(4) {
     transition-delay: 150ms;
-}
-
-.profile-share-row:hover .profile-share-actions button:nth-child(5),
-.profile-share-row:focus-within .profile-share-actions button:nth-child(5) {
-    transition-delay: 200ms;
 }
 
 .profile-share-actions button:hover,
@@ -625,8 +688,16 @@ body::before {
         padding: 22px;
     }
 
+    .social-links {
+        padding-inline: 4px;
+    }
+
     .success-alert {
-        top: 86px;
+        width: 100%;
+    }
+
+    .alert-stack {
+        top: 14px;
         right: 14px;
     }
 
