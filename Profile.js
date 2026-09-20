@@ -179,6 +179,7 @@ const developmentAlert = document.querySelector("#development-alert");
 const developmentClose = developmentAlert.querySelector(".achievement-close");
 const achievementSound = new Audio("orb.mp3");
 const clickSound = new Audio("minecraft_click.mp3");
+achievementSound.autoplay = true;
 achievementSound.preload = "auto";
 achievementSound.volume = 1;
 clickSound.preload = "auto";
@@ -228,7 +229,7 @@ function playAchievementSound() {
 }
 
 window.addEventListener("load", () => {
-    setTimeout(playAchievementSound, 350);
+    playAchievementSound();
 });
 
 achievementClose.addEventListener("click", () => {
