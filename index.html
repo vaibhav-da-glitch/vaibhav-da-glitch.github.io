@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vaibhav</title>
+
+    <link rel="stylesheet" href="Profile.css">
+</head>
+
+<body>
+
+    <canvas id="snow"></canvas>
+    <canvas id="click-spark" aria-hidden="true"></canvas>
+    <div class="cursor-point" aria-hidden="true"></div>
+
+    <main class="content">
+        <h1>VAIBHAV</h1>
+        <p>I BUILD THINGS.</p>
+        <section class="description" aria-label="About Vaibhav">
+            <div class="description-header">
+                <span class="description-number">01</span>
+                <span class="description-label">ABOUT ME</span>
+            </div>
+            <h2>Curious & Alive</h2>
+            <p>Hey, I’m Vaibhav — an IT student who likes making things and figuring out how they work. I’m into C++, web development, game development, and trying out new tech. I usually learn by building instead of just reading about it, and I like clean interfaces, random ideas, and turning “what if?” into something real. Outside tech, I’m really into football and enjoy playing whenever I get the chance. I also like experimenting, tweaking things, and going down random tech rabbit holes. Still learning, still building, and seeing where it takes me.</p>
+        </section>
+        <section class="social-links" aria-label="Social links">
+            <div class="social-links-header">
+                <span class="description-number">02</span>
+                <span class="description-label">FIND ME ONLINE</span>
+            </div>
+            <div class="social-links-list">
+                <a class="social-link social-link-instagram" href="https://www.instagram.com/vaibhav.pachkore/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" /><circle cx="12" cy="12" r="3.5" /><circle cx="17.3" cy="6.8" r="1" fill="currentColor" /></svg>
+                </a>
+                <a class="social-link social-link-linkedin" href="https://www.linkedin.com/in/vaibhav-pachkore/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" /><path d="M8 10v6m0-8v.1M12 16v-3.2a2 2 0 0 1 4 0V16m-4-3.2V10" /></svg>
+                </a>
+                <a class="social-link social-link-substack" href="https://substack.com/@vaibhavpachkore" target="_blank" rel="noopener noreferrer" aria-label="Substack" title="Substack">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14M5 8h14M5 11h14v9l-7-4-7 4V11Z" /></svg>
+                </a>
+                <a class="social-link social-link-github" href="https://github.com/vaibhav-da-glitch" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5a7.5 7.5 0 0 0-2.4 14.6c.4.1.5-.2.5-.4v-1.5c-2 .4-2.5-1-2.5-1-.3-.9-.8-1.1-.8-1.1-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.8.9 2.2.7.1-.5.3-.9.5-1.1-1.6-.2-3.3-.8-3.3-3.5 0-.8.3-1.4.8-1.9-.1-.2-.3-.9.1-1.9 0 0 .6-.2 2 .7a6.8 6.8 0 0 1 3.6 0c1.4-.9 2-.7 2-.7.4 1 .2 1.7.1 1.9.5.5.8 1.1.8 1.9 0 2.7-1.7 3.3-3.3 3.5.3.3.5.8.5 1.5v2.2c0 .2.1.5.5.4A7.5 7.5 0 0 0 12 4.5Z" /></svg>
+                </a>
+                <a class="social-link social-link-leetcode" href="https://leetcode.com/u/CJoNDXbyhb/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode" title="LeetCode">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 5-5.5 5.5a2.1 2.1 0 0 0 0 3L16 19M13 8h5M13 16h5M9 4 6 7a7.1 7.1 0 0 0 0 10l3 3" /></svg>
+                </a>
+                <a class="social-link social-link-x" href="https://x.com/Vabhavaz" target="_blank" rel="noopener noreferrer" aria-label="X" title="X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19M6 5h3l9 14h-3L6 5Z" /></svg>
+                </a>
+            </div>
+        </section>
+        <div class="alert-stack">
+            <div class="success-alert development-alert" id="development-alert" role="status" aria-live="polite">
+                <svg class="development-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                    <path d="m10.3 4.4-7.5 13a1.2 1.2 0 0 0 1 1.8h16.4a1.2 1.2 0 0 0 1-1.8l-7.5-13a1.2 1.2 0 0 0-2.1 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                    <path d="M12 9v4m0 3v.1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <div>
+                    <strong>Site Update</strong>
+                    <span>The site is under development.</span>
+                </div>
+                <button class="achievement-close" type="button" aria-label="Dismiss site update">×</button>
+            </div>
+            <div class="success-alert" id="achievement-alert" role="status" aria-live="polite">
+                <svg class="success-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="m8 12 2.5 2.5L16 9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <div>
+                    <strong>Achievement Unlocked</strong>
+                    <span>You Found Vaibhav's Page ✦</span>
+                </div>
+                <button class="achievement-close" type="button" aria-label="Dismiss achievement">×</button>
+            </div>
+        </div>
+        <div class="profile-menu">
+            <button class="profile-trigger" type="button" aria-expanded="false" aria-controls="profile-dropdown">
+                <span class="profile-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M5 21a7 7 0 0 1 14 0" />
+                    </svg>
+                </span>
+            </button>
+            <span class="profile-bend" aria-hidden="true">
+                <svg viewBox="0 0 12 24"><path d="M2 4C6 8 6 16 2 20" /></svg>
+            </span>
+            <div class="profile-dropdown" id="profile-dropdown" hidden>
+                <div class="profile-list-row">
+                    <span class="profile-list-avatar" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M5 21a7 7 0 0 1 14 0" />
+                        </svg>
+                    </span>
+                    <span class="profile-list-copy">
+                        <strong>Vaibhav</strong>
+                        <span class="profile-list-email">vaibhavpachkore0@gmail.com</span>
+                    </span>
+                </div>
+                <div class="profile-divider"></div>
+                <div class="profile-share-row">
+                    <div class="profile-share-label">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" /><path d="m12 16 0-12m0 0L7 9m5-5 5 5" /></svg>
+                        <span>Share</span>
+                    </div>
+                    <div class="profile-share-actions">
+                        <button type="button" aria-label="Share on Twitter" data-share="twitter">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 7.5c-.5.2-1 .3-1.6.4A2.7 2.7 0 0 0 17.6 6a5.4 5.4 0 0 1-1.7.7 2.7 2.7 0 0 0-4.6 2v.6A7.7 7.7 0 0 1 5.7 6.4a2.7 2.7 0 0 0 .8 3.6 2.7 2.7 0 0 1-1.2-.3v.1a2.7 2.7 0 0 0 2.2 2.6 2.7 2.7 0 0 1-1.2 0 2.7 2.7 0 0 0 2.5 1.9A5.4 5.4 0 0 1 5 15.4 7.6 7.6 0 0 0 9.1 16.6c4.9 0 7.6-4.1 7.6-7.6v-.3c.5-.3.9-.7 1.3-1.2Z" fill="currentColor" /></svg>
+                        </button>
+                        <button type="button" aria-label="Share on Instagram" data-share="instagram">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" /><circle cx="12" cy="12" r="3.5" /><circle cx="17.3" cy="6.8" r="1" fill="currentColor" /></svg>
+                        </button>
+                        <button type="button" aria-label="Share on LinkedIn" data-share="linkedin">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" /><path d="M8 10v6m0-8v.1M12 16v-3.2a2 2 0 0 1 4 0V16m-4-3.2V10" /></svg>
+                        </button>
+                        <button type="button" aria-label="Copy link" data-share="copy">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 15 15 9m-4-4 1.2-1.2a3 3 0 0 1 4.2 4.2L15 9m-6 6-1.2 1.2a3 3 0 0 1-4.2-4.2L5 9" /></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-divider"></div>
+                <button class="profile-signout" type="button" data-profile-action="Sign Out">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H5v14h5M14 8l4 4-4 4M9 12h9" /></svg>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="Profile.js?v=62eb157"></script>
+</body>
+</html>
